@@ -1,3 +1,5 @@
 {
-    "python.pythonPath": "C:\\Users\\智明\\AppData\\Local\\Programs\\Python\\Python38\\python.exe"
+    "python.pythonPath": "C:\\Users\\智明\\AppData\\Local\\Programs\\Python\\Python38\\python.exe",
+    "python.linting.pylintArgs": [ "----extension-pkg-whitelist=1xml" ],
+    "files.encoding": "utf-8",
 }
