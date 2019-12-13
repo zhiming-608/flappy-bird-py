@@ -62,9 +62,13 @@ class Pipeline(object):
     def updatePos(self):
         self.x_pos -= self.x_gap
         if self.x_pos < -90:
-            game.score += 1      # 分数加一
             self.x_pos = width
             self.y_pos = random.randint(-630, -150)
+
+
+def checkScore():
+    if pipe.x_pos + pipe.pipeUp.get_width() // 2 < 50 + 17:         # 小鸟通过管道一半则视为通过
+        game.score += 1
 
 
 def checkIsDead():
@@ -164,5 +168,6 @@ if __name__ == '__main__':
         elif game.status == 1:
             # 游戏界面
             updateMap()
+            checkScore()
             checkIsDead()
     pygame.quit()
