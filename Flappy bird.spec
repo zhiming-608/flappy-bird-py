@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['Flappy bird.py'],
-             pathex=['E:\\vsc test\\test-python'],
+             pathex=['E:\\vsc test\\FlappyBird_py'],
              binaries=[],
              datas=[],
              hiddenimports=[],

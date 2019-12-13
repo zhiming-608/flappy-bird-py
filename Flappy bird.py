@@ -10,6 +10,7 @@ class Game(object):
         self.start = pygame.image.load("./picture/assets/start.png")
         self.topic = pygame.image.load("./picture/assets/topic.png")
         self.gameover = pygame.image.load("./picture/assets/gameover.png")
+        self.score = 0
 
     def drawBack(self):
         screen.fill((255, 255, 255))
@@ -61,10 +62,9 @@ class Pipeline(object):
     def updatePos(self):
         self.x_pos -= self.x_gap
         if self.x_pos < -90:
-            global score
-            score += 1      # 分数加一
+            game.score += 1      # 分数加一
             self.x_pos = width
-            self.y_pos = random.randint(-450, 0)
+            self.y_pos = random.randint(-630, -150)
 
 
 def checkIsDead():
@@ -80,6 +80,7 @@ def checkIsDead():
 def drawlaunch():
     bird.__init__()
     pipe.__init__()
+    game.__init__()
     screen.blit(background, (0, 0))
     tip_text = 'press "SPACE" or click to play'
     tip_text_font = pygame.font.SysFont('Arial', 30)
@@ -96,7 +97,7 @@ def showScore():
     screen.blit(background, (0, 0))
     screen.blit(pipe.pipeUp, (pipe.x_pos, pipe.y_pos))
     screen.blit(pipe.pipeDown, (pipe.x_pos, pipe.y_pos + 790))
-    score_text = 'your score is :' + str(score)
+    score_text = 'your score is :' + str(game.score)
     score_text_font = pygame.font.SysFont('Arial', 50)
     score_text_surf = score_text_font.render(score_text, True, (0, 0, 0))
     screen.blit(game.gameover, (111, 150))
@@ -127,7 +128,6 @@ if __name__ == '__main__':
     size = width, height = 400, 650
     screen = pygame.display.set_mode(size)
     clock = pygame.time.Clock()
-    score = 0
     game = Game()
     bird = Bird()
     pipe = Pipeline()
